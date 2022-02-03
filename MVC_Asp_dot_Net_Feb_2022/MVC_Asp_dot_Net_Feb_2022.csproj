@@ -10,4 +10,14 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Files\pic01.jpg" />
+    <None Include="wwwroot\Files\pic02.jpg" />
+    <None Include="wwwroot\Files\pic03.jpg" />
+  </ItemGroup>
+
 </Project>
