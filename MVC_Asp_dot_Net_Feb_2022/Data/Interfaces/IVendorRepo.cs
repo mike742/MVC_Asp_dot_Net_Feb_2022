@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MVC_Asp_dot_Net_Feb_2022.Data.Interfaces
 {
-    public interface IVendor
+    public interface IVendorRepo
     {
         void Create(Vendor input);
         IEnumerable<Vendor> GetAll();

@@ -25,7 +25,8 @@ namespace MVC_Asp_dot_Net_Feb_2022
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IVendor, MockVendorRepo>();
+            services.AddScoped<IVendorRepo, MockVendorRepo>();
+            services.AddScoped<IProductRepo, MockProductRepo>();
             services.AddControllersWithViews();
         }
 

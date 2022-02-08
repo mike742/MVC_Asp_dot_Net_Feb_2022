@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MVC_Asp_dot_Net_Feb_2022.Data.MockingRepos
 {
-    public class MockVendorRepo : IVendor
+    public class MockVendorRepo : IVendorRepo
     {
         private static List<Vendor> _vendors = new List<Vendor> {
             new Vendor { V_code = 21225, V_name = "Bryson, Inc",    V_contact = "Smithson",  V_AreaCode = 615, V_phone = "223-3234", V_state = "TN", V_order = "Y" },
