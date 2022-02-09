@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MVC_Asp_dot_Net_Feb_2022.Data;
 using MVC_Asp_dot_Net_Feb_2022.Data.Interfaces;
 using MVC_Asp_dot_Net_Feb_2022.Data.MockingRepos;
+using MVC_Asp_dot_Net_Feb_2022.Data.SqlRepos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +28,14 @@ namespace MVC_Asp_dot_Net_Feb_2022
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IVendorRepo, MockVendorRepo>();
+            services.AddDbContext<AppDbContext>(options => {
+                var connectioString = Configuration.GetConnectionString("Default");
+                options.UseMySql(connectioString, ServerVersion.AutoDetect(connectioString));
+            });
+
+
+            // services.AddScoped<IVendorRepo, MockVendorRepo>();
+            services.AddScoped<IVendorRepo, SqlVendorRepo>();
             services.AddScoped<IProductRepo, MockProductRepo>();
             services.AddControllersWithViews();
         }
