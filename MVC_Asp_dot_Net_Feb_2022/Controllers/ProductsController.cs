@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Asp_dot_Net_Feb_2022.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,17 +11,19 @@ namespace MVC_Asp_dot_Net_Feb_2022.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly IProductRepo _repo;
+        private readonly IProductRepo _productRepo;
+        private readonly IVendorRepo _vendorRepo;
 
-        public ProductsController(IProductRepo repo)
+        public ProductsController(IProductRepo productRepo, IVendorRepo vendorRepo)
         {
-            _repo = repo;
+            _productRepo = productRepo;
+            _vendorRepo = vendorRepo;
         }
 
         // GET: ProductsController
         public ActionResult Index()
         {
-            return View(_repo.GetAll());
+            return View(_productRepo.GetAll());
         }
 
         // GET: ProductsController/Details/5
@@ -32,6 +35,7 @@ namespace MVC_Asp_dot_Net_Feb_2022.Controllers
         // GET: ProductsController/Create
         public ActionResult Create()
         {
+            ViewBag.Vendors = new SelectList(_vendorRepo.GetAll(), "V_code", "V_name");
             return View();
         }
 

@@ -68,9 +68,9 @@
                     @Html.DisplayFor(modelItem => item.V_order)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id=item.V_code }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.V_code }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.V_code })
                 </td>
             </tr>
         }

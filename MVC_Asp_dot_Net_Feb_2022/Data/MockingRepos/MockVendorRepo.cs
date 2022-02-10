@@ -43,7 +43,7 @@ namespace MVC_Asp_dot_Net_Feb_2022.Data.MockingRepos
             throw new NotImplementedException();
         }
 
-        public void Update(Vendor input)
+        public void Update(int id, Vendor input)
         {
             throw new NotImplementedException();
         }

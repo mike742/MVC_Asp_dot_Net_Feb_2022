@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC_Asp_dot_Net_Feb_2022.Data.Interfaces;
+using MVC_Asp_dot_Net_Feb_2022.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,71 @@ namespace MVC_Asp_dot_Net_Feb_2022.Controllers
             }
 
             return result;
+        }
+
+        // Get
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Vendor input)
+        {
+            try
+            {
+                _repo.Create(input);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View(_repo.GetById(id));
+        }
+
+        // POST: ProductsController/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, Vendor input)
+        {
+            try
+            {
+                _repo.Update(id, input);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            return View(_repo.GetById(id));
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return View(_repo.GetById(id));
+        }
+
+        // POST: ProductsController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, Vendor vendor)
+        {
+            try
+            {
+                _repo.Delete(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

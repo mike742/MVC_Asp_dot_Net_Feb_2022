@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +11,9 @@ namespace MVC_Asp_dot_Net_Feb_2022.Models
     {
         [Key]
         public int V_code { get; set; }
+        [DisplayName("Name")]
         public string V_name { get; set; }
+        [DisplayName("Contact")]
         public string V_contact { get; set; }
         public int V_AreaCode { get; set; }
         public string V_phone { get; set; }

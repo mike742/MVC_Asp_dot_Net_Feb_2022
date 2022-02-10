@@ -18,12 +18,19 @@ namespace MVC_Asp_dot_Net_Feb_2022.Data.SqlRepos
 
         public void Create(Vendor input)
         {
-            throw new NotImplementedException();
+            _context.Vendors.Add(input);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var vendorToDelete = _context.Vendors.FirstOrDefault(v => v.V_code == id);
+
+            if (vendorToDelete != null)
+            {
+                _context.Remove(vendorToDelete);
+                _context.SaveChanges();
+            }
         }
 
         public IEnumerable<Vendor> GetAll()
@@ -33,12 +40,24 @@ namespace MVC_Asp_dot_Net_Feb_2022.Data.SqlRepos
 
         public Vendor GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Vendors.FirstOrDefault(v => v.V_code == id);
         }
 
-        public void Update(Vendor input)
+        public void Update(int id, Vendor input)
         {
-            throw new NotImplementedException();
+            var vendorInDb = _context.Vendors.FirstOrDefault(v => v.V_code == id);
+
+            if (vendorInDb != null)
+            {
+                vendorInDb.V_AreaCode = input.V_AreaCode;
+                vendorInDb.V_contact = input.V_contact;
+                vendorInDb.V_name = input.V_name;
+                vendorInDb.V_order = input.V_order;
+                vendorInDb.V_phone = input.V_phone;
+                vendorInDb.V_state = input.V_state;
+
+                _context.SaveChanges();
+            }
         }
     }
 }

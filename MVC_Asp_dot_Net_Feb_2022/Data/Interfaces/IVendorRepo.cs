@@ -11,7 +11,7 @@ namespace MVC_Asp_dot_Net_Feb_2022.Data.Interfaces
         void Create(Vendor input);
         IEnumerable<Vendor> GetAll();
         Vendor GetById(int id);
-        void Update(Vendor input);
+        void Update(int id, Vendor input);
         void Delete(int id);
     }
 }
